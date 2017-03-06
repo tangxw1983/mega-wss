@@ -1,0 +1,24 @@
+{
+  "name": "mega-wss",
+  "version": "1.0.0",
+  "description": "wss",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangxw1983/mega-wss.git"
+  },
+  "author": "tang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tangxw1983/mega-wss/issues"
+  },
+  "homepage": "https://github.com/tangxw1983/mega-wss#readme",
+  "dependencies": {
+    "async": "^2.1.5",
+    "fs": "0.0.1-security",
+    "mega-common": "^1.0.1"
+  }
+}
