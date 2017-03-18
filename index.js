@@ -122,7 +122,7 @@ function BusinessLogic(conn,data_o,_token){
         switch (_req._m) {
             case "publish":
                 var p = typeof _req._p == "string" ? s2o(_req._p) : _req._p;
-                PluginManager.publish(p, function(err,installedWorkers){
+                PluginManager.publish(p, function (err, installedWorkers) {
                     if (!!err) {
                         WS_Reply(
                             conn,
@@ -136,15 +136,15 @@ function BusinessLogic(conn,data_o,_token){
                             _token
                         );
 
-                        for(var i=0;i<installedWorkers.length;i++) {
+                        for (var i = 0; i < installedWorkers.length; i++) {
                             var worker = WorkerManager.getAvailableWorker(installedWorkers[i], true);
-                            var wsw_conn= worker ? worker.conn : null;
+                            var wsw_conn = worker ? worker.conn : null;
                             if (wsw_conn) {
-                                WS_Request(wsw_conn,{
+                                WS_Request(wsw_conn, {
                                     _c: "worker",
                                     _m: "deprecatePlugin",
                                     _p: p.name
-                                },function(){
+                                }, function () {
 
                                 });
                             }
@@ -161,7 +161,7 @@ function BusinessLogic(conn,data_o,_token){
                         _token
                     );
                 } else {
-                    PluginManager.download(_req._p, worker.name, function(err, code){
+                    PluginManager.download(_req._p, worker.name, function (err, code) {
                         if (!!err) {
                             WS_Reply(
                                 conn,
@@ -177,6 +177,33 @@ function BusinessLogic(conn,data_o,_token){
                         }
                     });
                 }
+                break;
+            default:
+                WS_Reply(
+                    conn,
+                    {STS: "KO", MSG: "_m " + _req._c + "." + _req._m + " TODO"},
+                    _token
+                );
+                break;
+        }
+    } else if (_req._c == "client") {
+        switch (_req._m) {
+            case "OnWSClientOpen":
+                WS_Reply(
+                    conn,
+                    {
+                        STS: "OK",
+                        data: {ping: _req.ping, pong: +(new Date())}
+                    },
+                    _token
+                );
+                break;
+            default:
+                WS_Reply(
+                    conn,
+                    {STS: "KO", MSG: "_m " + _req._c + "." + _req._m + " TODO"},
+                    _token
+                );
                 break;
         }
     } else {
