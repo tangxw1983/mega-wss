@@ -19,6 +19,7 @@
   "dependencies": {
     "async": "^2.1.5",
     "fs": "0.0.1-security",
-    "mega-common": "^1.0.1"
+    "mega-common": "^1.0.2",
+    "q": "^1.4.1"
   }
 }
