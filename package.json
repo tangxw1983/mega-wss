@@ -1,6 +1,6 @@
 {
   "name": "mega-wss",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "wss",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "async": "^2.1.5",
     "fs": "0.0.1-security",
-    "mega-common": "^1.0.6",
+    "mega-common": "^1.0.7",
     "q": "^1.4.1"
   }
 }
